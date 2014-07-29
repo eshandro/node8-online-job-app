@@ -59,6 +59,15 @@ app.post('/delete-applicant', function(req, res) {
 			res.redirect('applicants')	
 		}
 	})
+});
+
+app.get('/:userid', function(req, res) {
+	var currentApplicant = req. params.userid;
+	Applicant.findById(currentApplicant, function(error, applicant) {
+		res.render('currentApplicant', {
+			applicant: applicant,
+		})
+	})
 })
 
 var server = app.listen(8441, function() {
