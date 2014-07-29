@@ -4,4 +4,8 @@ block content
 	.container
 		h1 Applicants
 		ul#applications.list-unstyled
-			li Applicants should go here.
+			for applicant in applicants
+				li Applicant: #{applicant.name}
+				form(method="post" action="/delete-applicant")
+					input(type='hidden' name='id' value='#{applicant._id}')
+					input.btn.btn-default(type="submit" value="Delete")
